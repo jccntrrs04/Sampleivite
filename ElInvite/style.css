@@ -1,0 +1,77 @@
+:root{
+  --sky:#9fd8ff; --sky2:#ffe9c7; --sun:#ffc93c; --coral:#ff7a59; --navy:#12355b; --mint:#3ed1b0; --sand:#fff3d6;
+  --display:'Fredoka','Trebuchet MS',sans-serif; --body:'Nunito','Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--body);color:var(--navy);background:linear-gradient(var(--sky) 0%,var(--sky2) 70%);overflow-x:hidden;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:max(20px,env(safe-area-inset-top)) 16px 90px}
+
+/* scenery */
+.sun{position:fixed;top:4vh;right:6vw;width:90px;height:90px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 14px #ffc93c44,0 0 0 30px #ffc93c22;animation:spin 14s linear infinite}
+.sun::after{content:"😎";position:absolute;inset:0;display:grid;place-items:center;font-size:44px;animation:spin 14s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cloud{position:fixed;left:-160px;font-size:64px;opacity:.9;animation:drift linear infinite;z-index:0}
+.c1{top:10vh;animation-duration:38s}.c2{top:28vh;font-size:44px;animation-duration:52s;animation-delay:-20s}.c3{top:62vh;font-size:54px;animation-duration:46s;animation-delay:-8s}
+@keyframes drift{to{transform:translateX(calc(100vw + 200px))}}
+.mountains{position:fixed;left:0;right:0;bottom:0;height:34vh;max-height:300px;z-index:0;pointer-events:none}
+.mountains svg{position:absolute;bottom:0;left:0;width:100%}
+.m1{height:100%}.m2{height:78%}.m3{height:56%}
+.bird{position:fixed;top:18vh;left:-80px;font-size:34px;z-index:1;animation:fly 30s linear infinite,flap 1.4s ease-in-out infinite}
+@keyframes fly{to{left:105vw}}
+@keyframes flap{50%{margin-top:-14px;rotate:-8deg}}
+
+/* stage */
+.stage{position:relative;z-index:2;width:min(460px,100%);text-align:center}
+.hint{font-family:var(--display);font-size:1.25rem;margin-bottom:18px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+
+/* envelope */
+.env{position:relative;width:260px;height:170px;margin:0 auto;cursor:pointer;background:none;border:0;display:block;animation:wiggle 3s ease-in-out infinite;transition:transform .5s}
+.env:focus-visible{outline:4px solid var(--navy);outline-offset:8px;border-radius:12px}
+@keyframes wiggle{0%,86%,100%{rotate:0deg}90%{rotate:-4deg}94%{rotate:4deg}98%{rotate:-2deg}}
+.env .back,.env .front{position:absolute;inset:0;border-radius:14px}
+.env .back{background:#ffb199}
+.env .front{background:var(--coral);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.env .flap{position:absolute;left:0;right:0;top:0;height:60%;background:#ff9577;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s .1s;z-index:3}
+.env .heart{position:absolute;left:50%;top:52%;translate:-50% -50%;font-size:34px;z-index:4;animation:beat 1.2s ease-in-out infinite}
+@keyframes beat{50%{scale:1.25}}
+.env.open{animation:none;transform:translateY(70px) scale(.8);opacity:0;pointer-events:none;transition:transform .8s .5s,opacity .5s .9s}
+.env.open .flap{transform:rotateX(180deg)}
+.env.open .heart{display:none}
+
+/* card */
+.card{display:none;background:#fffdf6;border-radius:28px;padding:30px 22px 26px;box-shadow:0 18px 40px #12355b40,0 0 0 6px #fff;position:relative;transform:translateY(40px) scale(.9);opacity:0}
+.card.show{display:block;animation:pop .8s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes pop{to{transform:none;opacity:1}}
+.badge{position:absolute;top:-22px;left:50%;translate:-50% 0;background:var(--sun);font-family:var(--display);font-weight:700;padding:6px 18px;border-radius:99px;box-shadow:0 4px 0 #d9a21c;white-space:nowrap;rotate:-3deg}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,9vw,2.7rem);line-height:1.05;margin:14px 0 10px}
+h1 .bounce{display:inline-block;animation:hop 1.4s ease-in-out infinite}
+@keyframes hop{0%,60%,100%{translate:0 0}30%{translate:0 -10px}}
+.lead{font-size:1.08rem;font-weight:600;line-height:1.5;margin:6px 4px 18px}
+.emoji-row{font-size:2rem;display:flex;justify-content:center;gap:10px;margin-bottom:12px}
+.emoji-row span{animation:hop 2s ease-in-out infinite}
+.emoji-row span:nth-child(2){animation-delay:.2s}.emoji-row span:nth-child(3){animation-delay:.4s}.emoji-row span:nth-child(4){animation-delay:.6s}.emoji-row span:nth-child(5){animation-delay:.8s}
+.info{display:grid;gap:10px;text-align:left;margin-bottom:18px}
+.info div{display:flex;gap:12px;align-items:center;background:var(--sand);border-radius:16px;padding:10px 14px;font-weight:800}
+.info small{display:block;font-weight:600;opacity:.7;font-size:.78rem}
+.info i{font-style:normal;font-size:1.6rem}
+.count{display:flex;justify-content:center;gap:8px;margin-bottom:18px}
+.count b{background:var(--navy);color:#fff;border-radius:14px;padding:8px 6px;min-width:60px;font-family:var(--display);font-size:1.5rem;font-weight:600;line-height:1}
+.count b small{display:block;font-size:.65rem;font-weight:400;margin-top:3px;opacity:.8}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{font-family:var(--display);font-weight:600;font-size:1.1rem;min-height:48px;border:0;border-radius:99px;padding:12px 22px;cursor:pointer;transition:transform .15s,box-shadow .15s;color:#fff;touch-action:manipulation}
+.btn:active{transform:translateY(3px)}
+.yes{background:var(--mint);box-shadow:0 5px 0 #229a80}.yes:active{box-shadow:0 2px 0 #229a80}
+.maybe{background:var(--coral);box-shadow:0 5px 0 #c9553a}.maybe:active{box-shadow:0 2px 0 #c9553a}
+@media (hover:hover){.btn:hover{transform:translateY(-2px) rotate(-1deg)}}
+.btn:focus-visible{outline:4px solid var(--navy);outline-offset:3px}
+.thanks{margin-top:14px;font-family:var(--display);font-size:1.15rem;min-height:1.4em}
+.mute{position:fixed;top:max(12px,env(safe-area-inset-top));left:12px;z-index:5;background:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:1.3rem;cursor:pointer;box-shadow:0 3px 10px #12355b33;touch-action:manipulation}
+.mute:focus-visible{outline:3px solid var(--navy)}
+.fly{position:fixed;pointer-events:none;z-index:9;top:-30px;font-size:22px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+
+.send{margin-top:14px}
+
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}.cloud,.bird{display:none}}
+

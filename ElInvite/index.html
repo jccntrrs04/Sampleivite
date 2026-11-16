@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#9fd8ff">
+<title>You're invited on a trip! ⛰️</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="mute" id="mute" aria-label="Toggle sound">🔊</button>
+<div class="sun" aria-hidden="true"></div>
+<div class="cloud c1" aria-hidden="true">☁️</div><div class="cloud c2" aria-hidden="true">☁️</div><div class="cloud c3" aria-hidden="true">☁️</div>
+<div class="bird" aria-hidden="true">🦅</div>
+<div class="mountains" aria-hidden="true">
+  <svg class="m1" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0 200V110L120 50 230 105 360 30 500 115 640 55 780 120 920 40 1060 105 1200 60V200Z" fill="#9db9d6"/><path d="M360 30l24 20-14 6-12-10-14 10-10-8zM920 40l22 18-12 6-10-9-12 9-8-7z" fill="#fff"/></svg>
+  <svg class="m2" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0 200V130L150 70 300 125 450 60 600 130 760 75 920 135 1080 80 1200 125V200Z" fill="#5f9a80"/></svg>
+  <svg class="m3" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0 200V150L110 110 240 155 380 105 520 160 680 115 840 165 1000 120 1200 160V200Z" fill="#2f6b52"/></svg>
+</div>
+
+<main class="stage">
+  <p class="hint" id="hint">Psst, you got mail! Tap it 💌</p>
+  <button class="env" id="env" aria-label="Open your invitation">
+    <span class="back"></span><span class="flap"></span><span class="front"></span><span class="heart">🌴</span>
+  </button>
+
+  <section class="card" id="card" aria-live="polite">
+    <div class="badge">Trip alert!</div>
+    <h1 id="title"></h1>
+    <div class="emoji-row" aria-hidden="true"><span>⛰️</span><span>🌲</span><span>🏕️</span><span>🥾</span><span>🔥</span></div>
+    <p class="lead" id="lead"></p>
+    <div class="info">
+      <div><i>📍</i><span><small>Where</small><span id="where"></span></span></div>
+      <div><i>📅</i><span><small>When</small><span id="when"></span></span></div>
+      <div><i>🚗</i><span><small>Meet up</small><span id="meet"></span></span></div>
+    </div>
+    <div class="count" id="count" aria-label="Countdown"></div>
+    <div class="btns">
+      <button class="btn yes" id="yes">I'm in! 🤙</button>
+      <button class="btn maybe" id="maybe">Let me check 🤔</button>
+    </div>
+    <p class="thanks" id="thanks"></p>
+    <button class="btn yes send" id="sendRsvp" hidden>Send my RSVP email 💌</button>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
